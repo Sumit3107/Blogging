@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roy Blog- Create Post</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/create.css">
+    <link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+    <link rel="canonical" href="https://codepen.io/DasBo/pen/RpwOmp?limit=all&page=38&q=image" />
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+       <%- include ('../shared/header') %>
+
+    <div class="container p-5" id="postcont">
+        <div class="row ">
+            <h2 class="createhead p-3">Create New Post</h2>
+            <h1 class="col"></h1>
+        </div>
+        <div class="container p-4">
+           
+           
+            <form action="/pages/storepost" method="POST" enctype="multipart/form-data">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label for="title">Title</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Title" >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label for="img">Select Image</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="file" class="form-control-file" id="img" name="img" accept="image/*" >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label for="desc">Description</label>
+                    </div>
+                    <div class="col-8">
+                        <textarea name="desc" class="form-control" id="desc" rows="10" placeholder="Type something....." ></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-8">
+                            <button  class="btn btn-primary">Create Post</button>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+    <!-- Footer -->
+	   <%- include ('../shared/footer') %>
+
+	<!-- ./Footer -->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="../js/index.js"></script>
+</body>
+</html>

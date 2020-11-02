@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roy Blog - Post</title>
+    <link rel="stylesheet" href="/css/post.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+      <header>
+        <a href="/"><img  class="timlogo" src="/images/logo.jpg"/></a>
+        <div class="nav-modal">
+            <div class="blob"></div>
+            <nav>
+                <ul>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/pages/posts">VIEW POSTS</a></li>
+
+                    <li><a href="/login">LOGIN</a></li>
+                                
+                    <li><a href="/pages/createpost">CREATE POSTS</a></li>
+
+                    <li><a href="/pages/about">ABOUT</a></li>
+                    <li><a href="/pages/contact">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="head">
+            <a href="https://www.facebook.com/profile.php?id=100008822083238" class="tile socialmedia"><i class="fa fa-facebook-official"></i></a>
+            <a href="https://www.instagram.com/roy.sumit31" class="tile socialmedia"><i class="fa fa-instagram"></i></a>
+            <a href="https://twitter.com/Sumitku98874158" class="tile socialmedia"><i class="fa fa-twitter-square"></i></a>
+            <div class="tile burger">
+                <div class="meat">
+                    <div class="line one"></div>
+                    <div class="line two"></div>
+                    <div class="line three"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container p-5" id="postcont">
+      <div class="row">
+        <div class="col-10 ">
+            <h2 id="posttitle"><%=blogcontent.title%></h2>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary float-right" disabled>Edit Post</button>
+        </div>
+      </div>
+      <p class="float-right"><i><%=blogcontent.createdAt.toDateString()%></i></p>
+      <div class="container p-5">
+        <div class="col-12">
+          <img src="/upload/<%=blogcontent.img%>" alt="" id="postimg" width="1000" height="1000"/>
+        </div>
+        <div class="col-12">
+          <p class="p-5" id="postdesc">
+           <%=blogcontent.description%>
+          </p>
+        </div>
+        <div class="row">
+            <i onclick="myFunction(this)" class="fa fa-thumbs-up fa-2x m-2"></i>
+            <p class="p-3"><b>1 person liked this...</b> </p>
+        </div>
+        <div class="comment">
+             <div class="showcom mt-2">
+                       
+                 <% for(var i=0; i< comm.length; i++) { %>
+                    <div class="row p-2 align-items-center rounded-pill mt-1" id="cmntodd">
+                      <p><%=comm[i].name%></p>
+                      <div class="col-3" style="border-right: 1px solid black;">
+                        </div>
+                        <div class="col-5">
+                            <p class="p-2"><%=comm[i].comment %></p>
+                        </div>
+                        <div class="col-4">
+                            <p class="float-right"><%=comm[i].createdAt.toDateString( )%></p>
+                        </div>
+                        <hr>
+                    </div>
+                 <% } %>
+            </div>
+          <div>
+                <form action="/pages/post/<%=blogcontent._id%>" method="POST">
+                    <label for="name"><h5>Name</h5></label>
+                    <input name = "name" type="text" class="form-control" id="name">
+                    <label for="comment"><h5>Comment</h5></label>
+                    <textarea name="comment" id="comment" class="form-control" rows="3" placeholder="Comment here...."></textarea>
+                    <button  class="btn btn-primary mt-2">Comment</button>
+                </form>
+            </div>
+           
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+      <%- include ('../shared/footer') %>
+
+    <!-- ./Footer -->
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="../js/index.js"></script>
+    <script>
+        function myFunction(x) {
+          x.classList.toggle("fa-thumbs-down");
+        }
+    </script>
+  </body>
+</html>

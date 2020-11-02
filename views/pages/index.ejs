@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roy Blog</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <%- include ('../shared/header') %>
+    
+    <div class="secheader col-12"></div>
+    <div class="container p-5" id="postcont">
+        <div class="row shadow p-3 mb-5 bg-white rounded">
+            <a href="/pages/posts" class="a"><h1>Latest Posts</h1></a>
+            <hr>
+        </div>
+        <div class="row">
+           <!-- Latest 3 post will be shown here -->  
+           <% for(var i=0 ; i < blogcontent.length;i++) {%>
+          <div class="col-12 col-sm-6 col-md-4 mt-5">
+               
+                <div class="card shadow mb-5 bg-white rounded" id="postcard">
+                    <img src="./upload/<%=blogcontent[i].img%>" alt="Pictures" class="card-img-top w-100" width="500" height="200">
+                    <div class="card-body">
+                      <h5 class="card-title"><%=blogcontent[i].title%>(<%=blogcontent[i].createdAt.toDateString()%>)</h5>
+                      <p class="card-text"><%=blogcontent[i].description.substring(0,200)%></p>
+                      <a href="/pages/post/<%=blogcontent[i]._id%>" class="btn btn-primary">Read More</a>
+                    </div>
+                  </div>
+          </div>
+            <% } %>
+        </div>
+    </div>
+    <!-- Footer -->
+	<%- include ('../shared/footer') %>
+	<!-- Footer -->
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>
