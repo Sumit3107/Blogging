@@ -51,7 +51,7 @@
             <h2 id="posttitle"><%=blogcontent.title%></h2>
         </div>
         <div class="col-2">
-            <button class="btn btn-primary float-right" disabled>Edit Post</button>
+            <a href="/pages/edit/<%=blogcontent._id%>" class="btn btn-primary float-right" >Edit Post</a>
         </div>
       </div>
       <p class="float-right"><i><%=blogcontent.createdAt.toDateString()%></i></p>
@@ -80,7 +80,7 @@
                             <p class="p-2"><%=comm[i].comment %></p>
                         </div>
                         <div class="col-4">
-                            <p class="float-right"><%=comm[i].createdAt.toDateString( )%></p>
+                            <p class="float-right"><%=comm[i].createdAt.toDateString()%></p>
                         </div>
                         <hr>
                     </div>

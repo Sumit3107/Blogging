@@ -45,7 +45,7 @@ exports.getcontact = (req,res)=>{
 }
 
 exports.storecontact = (req,res)=>{
-  //console.log(req.body)
+       console.log(req.body)
     
      name = req.body.name
      email = req.body.email
@@ -74,7 +74,7 @@ exports.getcreatepost = (req,res)=>{
 
 exports.storepost = (req,res) =>{
      
-
+      console.log(req.body)
      title = req.body.title
      desc = req.body.desc
      img  = req.file.filename
@@ -83,7 +83,6 @@ exports.storepost = (req,res) =>{
      blog.title = title
      blog.description = desc
      blog.img = img
-     
      blog.save().then(function(){
      res.redirect('/pages/posts')
   })
@@ -91,7 +90,7 @@ exports.storepost = (req,res) =>{
 }
 
 exports.storecomment = (req,res) =>{
-    //console.log(req.body)
+    console.log(req.body)
     pid = req.params.id 
     name = req.body.name
     comment = req.body.comment
@@ -106,4 +105,29 @@ exports.storecomment = (req,res) =>{
             res.redirect('/pages/posts')
     }) 
    
+}
+
+exports.edit = (req,res)=>{
+     id = req.params.id
+ Blog.findOne({_id:id}).then(function(blog){
+          console.log(blog)
+      res.render('pages/edit',{
+        blogcontent:blog
+      })
+ }) 
+  
+}
+
+
+exports.editpost = (req,res)=>{
+        //console.log(req.body)
+       id = req.body._id
+      Blog.update({_id:req.body_id},{$set: {
+    title: req.body.title,
+    description: req.body.description
+      }},function(){
+        res.redirect('/pages/posts')
+      }
+ )
+ //res.redirect('/pages/posts')
 }

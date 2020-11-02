@@ -33,8 +33,8 @@ router.post('/storepost',upload.single('img'),PageController.storepost)
 
 router.post('/post/:id',PageController.storecomment)
 
+router.get('/edit/:id',PageController.edit)
 
-
-
+router.post('/editpost',PageController.editpost)
 
 module.exports = router
